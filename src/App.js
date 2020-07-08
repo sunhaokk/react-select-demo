@@ -22,6 +22,20 @@ const customStyles = {
   }),
  
 }
+
+const collapseNode = () => ({ height: 0 });
+const expandNode = node => ({ height: node.scrollHeight });
+
+const inlineMotion = {
+  motionName: 'rc-menu-collapse',
+  onAppearStart: collapseNode,
+  onAppearActive: expandNode,
+  onEnterStart: collapseNode,
+  onEnterActive: expandNode,
+  onLeaveStart: expandNode,
+  onLeaveActive: expandNode,
+};
+
 export const colourOptions = [
   { value: 'ocean', label: 'Ocean', color: '#00B8D9', isFixed: true },
   { value: 'blue', label: 'Blue', color: '#0052CC', isDisabled: true },
@@ -198,7 +212,12 @@ const MenuList = props => {
   }
   return (
     <components.MenuList {...props}>
-      <Menu style={menuStyle} multiple={true} >
+      <Menu 
+      style={menuStyle} 
+      multiple={true}  
+      motion={inlineMotion}
+      selectedKeys={['4-1','4-2-0-1']}
+      >
       <MenuItem onClick={menuClick} >1</MenuItem>
       <SubMenu
       title={<span className="submenu-title-wrapper">offset sub menu 2</span>}
@@ -264,7 +283,6 @@ function App() {
         styles={{ clearIndicator: ClearIndicatorStyles }}
         // components={{ Control: ControlComponent, ClearIndicator,DropdownIndicator,Group,IndicatorsContainer,IndicatorSeparator,MenuList }}
         components={{ MenuList }}
-        menuIsOpen={true}
         styles={customStyles}
         isSearchable={false}
         name="color"
