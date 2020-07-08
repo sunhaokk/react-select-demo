@@ -46,3 +46,7 @@ selectProps
 
 isClearable 用来控制右侧的叉号显示不显示
 isSearchable  用来控制是否可以搜索
+
+
+地址
+https://react-select.com/upgrade-guide
