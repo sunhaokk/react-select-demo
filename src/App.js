@@ -177,7 +177,7 @@ const Menus = props => {
 // MenuList
 
 const menuStyle = {
-  minWidth: '100px',
+  minWidth: '200px',
   padding: '0px 0px',
   margin: '0px'
 
@@ -198,13 +198,43 @@ const MenuList = props => {
   }
   return (
     <components.MenuList {...props}>
-      <Menu style={menuStyle}>
-      <MenuItem onClick={menuClick} multiple={true} selectedKeys={2-1}>1</MenuItem>
-      <SubMenu title="2">
-        <MenuItem onClick={subClick} key={2-1}>2-1</MenuItem>
-        <MenuItem>2-2</MenuItem>
-
+      <Menu style={menuStyle} multiple={true} >
+      <MenuItem onClick={menuClick} >1</MenuItem>
+      <SubMenu
+      title={<span className="submenu-title-wrapper">offset sub menu 2</span>}
+      key="4"
+      
+    >
+      <MenuItem key="4-1">inner inner</MenuItem>
+      <SubMenu
+        key="4-2"
+        title={<span className="submenu-title-wrapper">sub menu 1</span>}
+      >
+        <SubMenu
+          title={<span className="submenu-title-wrapper">sub 4-2-0</span>}
+          key="4-2-0"
+        >
+          <MenuItem key="4-2-0-1">inner inner</MenuItem>
+          <MenuItem key="4-2-0-2">inner inner2</MenuItem>
+        </SubMenu>
+        <MenuItem key="4-2-1">inn</MenuItem>
+        <SubMenu
+          title={<span className="submenu-title-wrapper">sub menu 4</span>}
+          key="4-2-2"
+        >
+          <MenuItem key="4-2-2-1">inner inner</MenuItem>
+          <MenuItem key="4-2-2-2">inner inner2</MenuItem>
+        </SubMenu>
+        <SubMenu
+          title={<span className="submenu-title-wrapper">sub menu 3</span>}
+          key="4-2-3"
+        >
+          <MenuItem key="4-2-3-1">inner inner</MenuItem>
+          <MenuItem key="4-2-3-2">inner inner2</MenuItem>
+        </SubMenu>
       </SubMenu>
+    </SubMenu>
+  
     </Menu>
     </components.MenuList>
   );
